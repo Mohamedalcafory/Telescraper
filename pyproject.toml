@@ -1,0 +1,11 @@
+[project]
+name = "telescrape"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas>=2.2.3",
+    "telethon>=1.39.0",
+    "tqdm>=4.67.1",
+]
