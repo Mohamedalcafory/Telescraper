@@ -1,0 +1,9 @@
+2025-05-16 18:09:16,314 - __main__ - INFO - Environment variables loaded
+2025-05-16 18:09:16,318 - __main__ - INFO - Starting classification with model: deepseek/deepseek-chat-v3-0324:free
+2025-05-16 18:09:16,319 - __main__ - INFO - Setting up OpenRouter client with key starting with: sk-or-v1-3...
+2025-05-16 18:09:16,730 - __main__ - INFO - Reading messages from muthanapress84_messages.csv
+2025-05-16 18:09:16,806 - __main__ - INFO - Successfully read 9215 messages from input file
+2025-05-16 18:09:16,809 - __main__ - INFO - Created backup of output file at classified_messages.csv.1747408156.bak
+2025-05-16 18:09:16,811 - __main__ - INFO - Processing messages 0 to 9214 out of 9215 using model deepseek/deepseek-chat-v3-0324:free
+2025-05-16 18:09:16,812 - __main__ - INFO - Using OpenRouter API
+2025-05-16 18:09:16,819 - __main__ - INFO - Sending request to model: deepseek/deepseek-chat-v3-0324:free

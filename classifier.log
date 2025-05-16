@@ -205,3 +205,17 @@
 2025-05-16 17:56:39,057 - __main__ - INFO - Saved progress: 2/9215 messages processed
 2025-05-16 17:56:40,068 - __main__ - INFO - Sending request to model: deepseek/deepseek-chat-v3-0324:free
 2025-05-16 17:56:40,191 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-16 17:58:11,509 - __main__ - INFO - Starting classification with model: deepseek/deepseek-chat-v3-0324:free
+2025-05-16 17:58:11,509 - __main__ - INFO - Setting up OpenRouter client with key starting with: sk-or-v1-3...
+2025-05-16 17:58:12,002 - __main__ - INFO - Reading messages from muthanapress84_messages.csv
+2025-05-16 17:58:12,101 - __main__ - INFO - Processing messages 0 to 9214 out of 9215 using model deepseek/deepseek-chat-v3-0324:free
+2025-05-16 17:58:12,109 - __main__ - INFO - Using OpenRouter API
+2025-05-16 17:58:12,118 - __main__ - INFO - Sending request to model: deepseek/deepseek-chat-v3-0324:free
+2025-05-16 17:58:13,206 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
+2025-05-16 17:59:06,363 - __main__ - INFO - Received response from API
+2025-05-16 17:59:06,364 - __main__ - INFO - Response content: ...
+2025-05-16 17:59:06,365 - __main__ - ERROR - Error classifying message: Expecting value: line 1 column 1 (char 0)
+2025-05-16 17:59:06,366 - __main__ - ERROR - Response content: 
+2025-05-16 17:59:06,387 - __main__ - INFO - Saved progress: 1/9215 messages processed
+2025-05-16 17:59:07,396 - __main__ - INFO - Sending request to model: deepseek/deepseek-chat-v3-0324:free
+2025-05-16 17:59:07,621 - httpx - INFO - HTTP Request: POST https://openrouter.ai/api/v1/chat/completions "HTTP/1.1 200 OK"
