@@ -1,0 +1,298 @@
+{
+  "gaza_strip": {
+    "governorates": [
+      {
+        "name": "North Gaza",
+        "name_ar": "شمال غزة",
+        "cities_and_towns": [
+          {
+            "name": "Jabalia",
+            "name_ar": "جباليا",
+            "type": "city",
+            "neighborhoods": [
+              {
+                "name": "Jabalia Camp",
+                "name_ar": "مخيم جباليا",
+                "streets": ["Al-Sikka Street", "Al-Faluja Street", "Beit Lahia Road"]
+              },
+              {
+                "name": "Al-Nazla",
+                "name_ar": "النزلة",
+                "streets": ["Al-Nazla Main Street", "Al-Mashroo Street"]
+              }
+            ]
+          },
+          {
+            "name": "Beit Lahia",
+            "name_ar": "بيت لاهيا",
+            "type": "city",
+            "neighborhoods": [
+              {
+                "name": "Al-Atatra",
+                "name_ar": "العطاطرة",
+                "streets": ["Al-Atatra Main Street", "Al-Ghoul Street"]
+              },
+              {
+                "name": "Beit Lahia Center",
+                "name_ar": "وسط بيت لاهيا",
+                "streets": ["Al-Qarm Street", "Al-Masriyeen Street", "Abu Obeidah Street"]
+              }
+            ]
+          },
+          {
+            "name": "Beit Hanoun",
+            "name_ar": "بيت حانون",
+            "type": "city",
+            "neighborhoods": [
+              {
+                "name": "Eastern Quarter",
+                "name_ar": "الحي الشرقي",
+                "streets": ["Sultan Abdul Hamid Street", "Zimmo Street"]
+              },
+              {
+                "name": "Western Quarter",
+                "name_ar": "الحي الغربي",
+                "streets": ["Al-Kafarna Street", "Al-Masri Street"]
+              }
+            ]
+          },
+          {
+            "name": "Um Al-Nasser",
+            "name_ar": "أم النصر",
+            "type": "village",
+            "streets": ["Main Street", "Eastern Street", "Northern Street"]
+          }
+        ]
+      },
+      {
+        "name": "Gaza",
+        "name_ar": "غزة",
+        "cities_and_towns": [
+          {
+            "name": "Gaza City",
+            "name_ar": "مدينة غزة",
+            "type": "city",
+            "neighborhoods": [
+              {
+                "name": "Al-Rimal",
+                "name_ar": "الرمال",
+                "streets": ["Omar Al-Mukhtar Street", "Al-Wehda Street", "Al-Jala Street", "Al-Thawra Street"]
+              },
+              {
+                "name": "Al-Shati Camp",
+                "name_ar": "مخيم الشاطئ",
+                "streets": ["Beach Road", "Al-Shati Main Street"]
+              },
+              {
+                "name": "Al-Tuffah",
+                "name_ar": "التفاح",
+                "streets": ["Salah Al-Din Street", "Al-Mansoura Street"]
+              },
+              {
+                "name": "Al-Daraj",
+                "name_ar": "الدرج",
+                "streets": ["Al-Wihda Street", "Al-Yarmouk Street"]
+              },
+              {
+                "name": "Al-Sabra",
+                "name_ar": "الصبرة",
+                "streets": ["Tariq Ibn Ziyad Street", "Al-Shabora Street"]
+              },
+              {
+                "name": "Al-Zaytoun",
+                "name_ar": "الزيتون",
+                "streets": ["Salah Al-Din Street", "Al-Qahira Street"]
+              },
+              {
+                "name": "Al-Shejaiya",
+                "name_ar": "الشجاعية",
+                "streets": ["Nazzaz Street", "Al-Muntar Street"]
+              },
+              {
+                "name": "Tel Al-Hawa",
+                "name_ar": "تل الهوا",
+                "streets": ["8th Street", "Al-Sana Street", "Al-Quds Street"]
+              }
+            ]
+          },
+          {
+            "name": "Juhor ad-Dik",
+            "name_ar": "جحر الديك",
+            "type": "village",
+            "streets": ["Main Road", "Agricultural Road"]
+          }
+        ]
+      },
+      {
+        "name": "Deir al-Balah",
+        "name_ar": "دير البلح",
+        "cities_and_towns": [
+          {
+            "name": "Deir al-Balah City",
+            "name_ar": "مدينة دير البلح",
+            "type": "city",
+            "neighborhoods": [
+              {
+                "name": "Deir al-Balah Camp",
+                "name_ar": "مخيم دير البلح",
+                "streets": ["Camp Main Street", "Beach Road"]
+              },
+              {
+                "name": "Al-Baraka",
+                "name_ar": "البركة",
+                "streets": ["Al-Baraka Street", "Al-Quds Street"]
+              }
+            ]
+          },
+          {
+            "name": "Al-Zawaida",
+            "name_ar": "الزوايدة",
+            "type": "town",
+            "streets": ["Main Street", "Al-Quds Street", "Salah Al-Din Street"]
+          },
+          {
+            "name": "Al-Nuseirat",
+            "name_ar": "النصيرات",
+            "type": "refugee_camp",
+            "neighborhoods": [
+              {
+                "name": "Eastern Nuseirat",
+                "name_ar": "النصيرات الشرقية",
+                "streets": ["Block 1 Street", "Block 2 Street"]
+              },
+              {
+                "name": "Western Nuseirat",
+                "name_ar": "النصيرات الغربية",
+                "streets": ["Main Camp Street", "Market Street"]
+              }
+            ]
+          },
+          {
+            "name": "Al-Bureij",
+            "name_ar": "البريج",
+            "type": "refugee_camp",
+            "streets": ["Main Camp Street", "Salah Al-Din Street", "Block Street"]
+          },
+          {
+            "name": "Al-Maghazi",
+            "name_ar": "المغازي",
+            "type": "refugee_camp",
+            "streets": ["Main Street", "Al-Shamal Street", "Al-Janoub Street"]
+          }
+        ]
+      },
+      {
+        "name": "Khan Younis",
+        "name_ar": "خان يونس",
+        "cities_and_towns": [
+          {
+            "name": "Khan Younis City",
+            "name_ar": "مدينة خان يونس",
+            "type": "city",
+            "neighborhoods": [
+              {
+                "name": "Al-Amal",
+                "name_ar": "الأمل",
+                "streets": ["Jamal Abdul Nasser Street", "Al-Amal Street"]
+              },
+              {
+                "name": "Khan Younis Camp",
+                "name_ar": "مخيم خان يونس",
+                "streets": ["Camp Main Street", "Al-Bahar Street"]
+              },
+              {
+                "name": "Al-Satar",
+                "name_ar": "الساطر",
+                "streets": ["Al-Qassam Street", "Al-Quds Street"]
+              },
+              {
+                "name": "Ma'an",
+                "name_ar": "معن",
+                "streets": ["Ma'an Main Street", "Eastern Street"]
+              }
+            ]
+          },
+          {
+            "name": "Bani Suhaila",
+            "name_ar": "بني سهيلا",
+            "type": "town",
+            "streets": ["Main Street", "Eastern Street", "Western Street"]
+          },
+          {
+            "name": "Abasan al-Kabira",
+            "name_ar": "عبسان الكبيرة",
+            "type": "town",
+            "streets": ["Main Street", "Northern Street", "Eastern Market Street"]
+          },
+          {
+            "name": "Abasan al-Jadida",
+            "name_ar": "عبسان الجديدة",
+            "type": "village",
+            "streets": ["Main Street", "School Street"]
+          },
+          {
+            "name": "Khuza'a",
+            "name_ar": "خزاعة",
+            "type": "town",
+            "streets": ["Main Road", "Eastern Border Road"]
+          },
+          {
+            "name": "Al-Qarara",
+            "name_ar": "القرارة",
+            "type": "town",
+            "streets": ["Main Street", "Salah Al-Din Street"]
+          }
+        ]
+      },
+      {
+        "name": "Rafah",
+        "name_ar": "رفح",
+        "cities_and_towns": [
+          {
+            "name": "Rafah City",
+            "name_ar": "مدينة رفح",
+            "type": "city",
+            "neighborhoods": [
+              {
+                "name": "Rafah Camp",
+                "name_ar": "مخيم رفح",
+                "streets": ["Camp Main Street", "Block O Street"]
+              },
+              {
+                "name": "Al-Jnina",
+                "name_ar": "الجنينة",
+                "streets": ["Al-Jnina Main Street", "Al-Awda Street"]
+              },
+              {
+                "name": "Tal Al-Sultan",
+                "name_ar": "تل السلطان",
+                "streets": ["Sultan Street", "Al-Quds Street"]
+              },
+              {
+                "name": "Al-Salam",
+                "name_ar": "السلام",
+                "streets": ["Al-Salam Street", "Eastern Street"]
+              },
+              {
+                "name": "Al-Shabora",
+                "name_ar": "الشابورة",
+                "streets": ["Al-Shabora Main Street", "Market Street"]
+              },
+              {
+                "name": "Brazil",
+                "name_ar": "البرازيل",
+                "streets": ["Brazil Main Street", "Border Street"]
+              }
+            ]
+          },
+          {
+            "name": "Al-Shuoka",
+            "name_ar": "الشوكة",
+            "type": "village",
+            "streets": ["Main Road", "Eastern Road"]
+          }
+        ]
+      }
+    ]
+  }
+} 

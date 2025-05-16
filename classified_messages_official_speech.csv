@@ -1,4 +1,4 @@
-Message ID,Date,Text,URL,civilian_deaths,targeting_civilians,blocking_aid,destroying_homes,targeting_facilities,forced_displacement,systematic_violence,is_official_speech,is_genocidal,explanation
+Message ID,Date,Text,URL,civilian_deaths,targeting_civilians,blocking_aid,destroying_homes,targeting_facilities,forced_displacement,systematic_violence,is_official_speech,is_genocidal,explanation,error
 232762,2025-05-16 13:29:56,"المتحدث باسم الدفاع المدني في قطاع غزة محمود بصل:
 
 - الوضع في شمالي القطاع صعب للغاية، في ظل استمرار القصف الإسرائيلي العنيف، وتواجد عشرات الشهداء تحت الأنقاض وفي الطرقات
@@ -9,4 +9,4 @@ Message ID,Date,Text,URL,civilian_deaths,targeting_civilians,blocking_aid,destro
 
 - الاحتلال باغت المواطنين بشكل مباشر في المناطق الشمالية من قطاع غزة، وتحديدًا في المناطق الشرقية والغربية
 
-- استهدف الاحتلال أكثر من 10 منازل مأهولة بالسكان بشكل مباشر في بيت لاهيا وجباليا، ما أدى لاستشهاد العشرات، وفقدان آخرين",https://t.me/muthanapress84/232762,True,True,True,True,False,False,True,True,True,النص يشير إلى استهداف متعمد للمدنيين والبنية التحتية المدنية، وعرقلة المساعدات الإنسانية، وتدمير المنازل المأهولة بالسكان، مما يشكل عنفًا ممنهجًا قد يصل إلى مستوى الإبادة الجماعية وفقًا لمعايير القانون الدولي الإنساني.
+- استهدف الاحتلال أكثر من 10 منازل مأهولة بالسكان بشكل مباشر في بيت لاهيا وجباليا، ما أدى لاستشهاد العشرات، وفقدان آخرين",https://t.me/muthanapress84/232762,True,True,True,True,False,False,True,True,True,النص يشير إلى استهداف متعمد للمدنيين والبنية التحتية المدنية، وعرقلة المساعدات الإنسانية، وتدمير المنازل المأهولة بالسكان، مما يشكل عنفًا ممنهجًا قد يصل إلى مستوى الإبادة الجماعية وفقًا لمعايير القانون الدولي الإنساني.,
