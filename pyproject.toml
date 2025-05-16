@@ -1,11 +1,14 @@
 [project]
 name = "telescrape"
 version = "0.1.0"
-description = "Add your description here"
+description = "Telegram scraper and message classifier for documenting events in Gaza"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "pandas>=2.2.3",
     "telethon>=1.39.0",
     "tqdm>=4.67.1",
+    "openai>=1.12.0",
+    "python-dotenv>=1.0.0",
+    "dotenv>=0.9.9",
 ]
