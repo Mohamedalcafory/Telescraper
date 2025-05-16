@@ -1,0 +1,90 @@
+2025-05-16 17:22:35,207 - __main__ - INFO - Starting classification with model: gpt-4-turbo
+2025-05-16 17:22:35,795 - __main__ - INFO - Reading messages from muthanapress84_messages.csv
+2025-05-16 17:22:35,909 - __main__ - INFO - Processing messages 0 to 9214 out of 9215
+2025-05-16 17:23:14,652 - __main__ - INFO - Starting classification with model: gpt-4-turbo
+2025-05-16 17:23:15,088 - __main__ - INFO - Reading messages from muthanapress84_messages.csv
+2025-05-16 17:23:15,170 - __main__ - INFO - Processing messages 0 to 9214 out of 9215
+2025-05-16 17:25:31,464 - __main__ - INFO - Starting classification with model: gpt-4-turbo
+2025-05-16 17:25:31,919 - __main__ - INFO - Reading messages from muthanapress84_messages.csv
+2025-05-16 17:25:31,999 - __main__ - INFO - Processing messages 0 to 9214 out of 9215
+2025-05-16 17:25:33,540 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:25:33,544 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-16 17:25:34,870 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:25:34,874 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-16 17:25:36,116 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:25:36,120 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-16 17:25:37,360 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:25:37,363 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-16 17:25:38,658 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:25:38,662 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-16 17:25:39,902 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:25:39,905 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-16 17:28:17,754 - __main__ - INFO - Starting classification with model: deepseek/deepseek-chat-v3-0324:free
+2025-05-16 17:28:18,236 - __main__ - INFO - Reading messages from muthanapress84_messages.csv
+2025-05-16 17:28:18,330 - __main__ - INFO - Processing messages 0 to 9214 out of 9215 using model deepseek/deepseek-chat-v3-0324:free
+2025-05-16 17:28:18,331 - __main__ - INFO - Using API type: OpenAI
+2025-05-16 17:28:19,534 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:28:19,540 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-16 17:28:20,782 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:28:20,785 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-16 17:28:22,092 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:28:22,095 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-16 17:35:34,636 - __main__ - INFO - Starting classification with model: deepseek/deepseek-chat-v3-0324:free
+2025-05-16 17:35:35,060 - __main__ - INFO - Reading messages from muthanapress84_messages.csv
+2025-05-16 17:35:35,145 - __main__ - INFO - Processing messages 0 to 9214 out of 9215 using model deepseek/deepseek-chat-v3-0324:free
+2025-05-16 17:35:35,147 - __main__ - INFO - Using API type: OpenAI
+2025-05-16 17:35:36,484 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:35:36,487 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-16 17:35:37,812 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:35:37,814 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-16 17:36:14,964 - __main__ - INFO - Starting classification with model: deepseek/deepseek-chat-v3-0324:free
+2025-05-16 17:36:15,398 - __main__ - INFO - Reading messages from muthanapress84_messages.csv
+2025-05-16 17:36:15,485 - __main__ - INFO - Processing messages 0 to 9214 out of 9215 using model deepseek/deepseek-chat-v3-0324:free
+2025-05-16 17:36:15,486 - __main__ - INFO - Using API type: OpenAI
+2025-05-16 17:36:16,580 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:36:16,584 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-16 17:36:17,851 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:36:17,855 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-16 17:36:19,114 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:36:19,117 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-16 17:38:15,660 - __main__ - INFO - Starting classification with model: deepseek/deepseek-chat-v3-0324:free
+2025-05-16 17:38:32,698 - __main__ - ERROR - Error processing messages: 
+2025-05-16 17:38:50,960 - __main__ - INFO - Starting classification with model: deepseek/deepseek-chat-v3-0324:free
+2025-05-16 17:39:04,049 - __main__ - ERROR - Error processing messages: 
+2025-05-16 17:40:39,190 - __main__ - INFO - Starting classification with model: deepseek/deepseek-chat-v3-0324:free
+2025-05-16 17:40:39,632 - __main__ - INFO - Reading messages from muthanapress84_messages.csv
+2025-05-16 17:40:39,717 - __main__ - INFO - Processing messages 0 to 9214 out of 9215 using model deepseek/deepseek-chat-v3-0324:free
+2025-05-16 17:40:39,717 - __main__ - INFO - Using API type: OpenAI
+2025-05-16 17:44:01,574 - __main__ - ERROR - Error classifying message: 
+2025-05-16 17:44:05,997 - __main__ - ERROR - Error classifying message: 
+2025-05-16 17:44:09,320 - __main__ - ERROR - Error classifying message: 
+2025-05-16 17:44:14,298 - __main__ - ERROR - Error classifying message: 
+2025-05-16 17:44:30,360 - __main__ - INFO - Starting classification with model: deepseek/deepseek-chat-v3-0324:free
+2025-05-16 17:44:30,795 - __main__ - INFO - Reading messages from muthanapress84_messages.csv
+2025-05-16 17:44:30,884 - __main__ - INFO - Processing messages 0 to 9214 out of 9215 using model deepseek/deepseek-chat-v3-0324:free
+2025-05-16 17:44:30,884 - __main__ - INFO - Using API type: OpenAI
+2025-05-16 17:44:31,146 - __main__ - ERROR - Error classifying message: 'extra_body'
+2025-05-16 17:44:32,152 - __main__ - ERROR - Error classifying message: 'extra_body'
+2025-05-16 17:44:33,159 - __main__ - ERROR - Error classifying message: 'extra_body'
+2025-05-16 17:44:34,167 - __main__ - ERROR - Error classifying message: 'extra_body'
+2025-05-16 17:44:35,174 - __main__ - ERROR - Error classifying message: 'extra_body'
+2025-05-16 17:44:36,184 - __main__ - ERROR - Error classifying message: 'extra_body'
+2025-05-16 17:44:37,192 - __main__ - ERROR - Error classifying message: 'extra_body'
+2025-05-16 17:44:38,196 - __main__ - ERROR - Error classifying message: 'extra_body'
+2025-05-16 17:44:39,204 - __main__ - ERROR - Error classifying message: 'extra_body'
+2025-05-16 17:44:40,213 - __main__ - WARNING - Skipping empty message at index 9
+2025-05-16 17:44:40,215 - __main__ - ERROR - Error classifying message: 'extra_body'
+2025-05-16 17:45:35,678 - __main__ - INFO - Starting classification with model: deepseek/deepseek-chat-v3-0324:free
+2025-05-16 17:45:36,097 - __main__ - INFO - Reading messages from muthanapress84_messages.csv
+2025-05-16 17:45:36,190 - __main__ - INFO - Processing messages 0 to 9214 out of 9215 using model deepseek/deepseek-chat-v3-0324:free
+2025-05-16 17:45:36,190 - __main__ - INFO - Using API type: OpenAI
+2025-05-16 17:45:37,581 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:45:37,584 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-16 17:45:38,826 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:45:38,830 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-16 17:45:40,078 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:45:40,081 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-16 17:45:41,333 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:45:41,336 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2025-05-16 17:45:42,600 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2025-05-16 17:45:42,603 - __main__ - ERROR - Error classifying message: Error code: 401 - {'error': {'message': 'Incorrect API key provided: sk-or-v1*************************************************************da8d. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
