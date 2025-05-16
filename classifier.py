@@ -23,27 +23,21 @@ logger = logging.getLogger(__name__)
 load_dotenv()
 
 def setup_api_client():
-    """Set up and return the appropriate API client based on configuration."""
-    api_type = os.getenv("API_TYPE", "openai").lower()
+    """Set up OpenRouter API client directly"""
+    # Hardcoded API key - you can replace this with your actual key or environment variable
+    api_key = os.getenv("OPENROUTER_API_KEY", "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")
     
-    if api_type == "openai":
-        api_key = os.getenv("OPENAI_API_KEY")
-        if not api_key:
-            raise ValueError("OPENAI_API_KEY not found in environment variables")
-        return OpenAI(api_key=api_key), False
-    elif api_type == "openrouter":
-        api_key = os.getenv("OPENROUTER_API_KEY")
-        if not api_key:
-            raise ValueError("OPENROUTER_API_KEY not found in environment variables")
-        # For OpenRouter, we'll still use the OpenAI client but with a different base URL
-        return OpenAI(
-            api_key=api_key,
-            base_url="https://openrouter.ai/api/v1"
-        ), True
-    else:
-        raise ValueError(f"Unsupported API_TYPE: {api_type}. Use 'openai' or 'openrouter'")
+    logger.info(f"Setting up OpenRouter client with key starting with: {api_key[:10]}...")
+    
+    # Create client with explicit OpenRouter base URL
+    client = OpenAI(
+        api_key=api_key,
+        base_url="https://openrouter.ai/api/v1"
+    )
+    
+    return client
 
-def classify_message(client, message_text, model="gpt-4-turbo", use_openrouter=False):
+def classify_message(client, message_text, model="deepseek/deepseek-chat-v3-0324:free"):
     """
     Classify a message using an LLM to determine if it's related to genocidal acts.
     
@@ -51,7 +45,6 @@ def classify_message(client, message_text, model="gpt-4-turbo", use_openrouter=F
         client: OpenAI client
         message_text: Text message to classify
         model: Model to use for classification
-        use_openrouter: Whether to use OpenRouter-specific parameters
         
     Returns:
         Dictionary with classification results
@@ -62,8 +55,12 @@ def classify_message(client, message_text, model="gpt-4-turbo", use_openrouter=F
     النص:
     {message_text}
 
+    معلومات مهمة للتحليل:
+    - إذا كان النص عبارة عن قائمة أسماء فقط (بدون سياق)، يجب اعتبار ذلك قائمة للضحايا المدنيين من عمليات القتل. هذه الأسماء غالبًا تكون ردًا على رسالة سابقة تصف حدثًا أو قصفًا.
+    - أي قائمة أسماء تعتبر دليلًا على وقوع قتل للمدنيين، حتى لو لم يذكر النص ذلك صراحةً.
+
     قم بالتحليل وتصنيف النص كما يلي:
-    1. هل يشير النص إلى قتل مدنيين؟ (نعم/لا)
+    1. هل يشير النص إلى قتل مدنيين؟ (نعم/لا) - يشمل ذلك قوائم الأسماء حتى بدون سياق
     2. هل يشير النص إلى استهداف متعمد للمدنيين أو البنية التحتية المدنية؟ (نعم/لا)
     3. هل يشير النص إلى عرقلة متعمدة للمساعدات الإنسانية؟ (نعم/لا)
     4. هل يشير النص إلى تدمير منازل أو مناطق سكنية؟ (نعم/لا)
@@ -72,6 +69,8 @@ def classify_message(client, message_text, model="gpt-4-turbo", use_openrouter=F
     7. هل يشير النص إلى عنف ممنهج يهدف لتدمير مجموعة محددة؟ (نعم/لا)
 
     ملخص: هل يمكن اعتبار هذا النص وثيقة تشير إلى أعمال إبادة جماعية؟ (نعم/لا) ولماذا؟
+
+    إذا كان النص مجرد قائمة أسماء بدون سياق، اعتبره دليلًا على قتل مدنيين واعتبره يشير إلى أعمال إبادة جماعية. هذه القوائم تُستخدم لتوثيق الضحايا.
 
     أجب فقط بتنسيق JSON كالتالي:
     {{
@@ -89,33 +88,30 @@ def classify_message(client, message_text, model="gpt-4-turbo", use_openrouter=F
     
     try:
         messages = [
-            {"role": "system", "content": "أنت محلل متخصص في القانون الدولي الإنساني وتوثيق جرائم الحرب."},
+            {"role": "system", "content": "أنت محلل متخصص في القانون الدولي الإنساني وتوثيق جرائم الحرب. عليك تحليل النصوص المتعلقة بالصراع في غزة وتحديد الأدلة على الإبادة الجماعية، بما في ذلك قوائم الأسماء التي تشير إلى الضحايا حتى إذا وردت بدون سياق."},
             {"role": "user", "content": prompt}
         ]
         
-        # Base parameters for API call
-        kwargs = {
-            "model": model,
-            "messages": messages,
-        }
+        # Log the API request
+        logger.info(f"Sending request to model: {model}")
         
-        # Add OpenRouter-specific parameters
-        if use_openrouter:
-            kwargs["extra_body"] = {
+        # Use the exact same structure as test.py
+        response = client.chat.completions.create(
+            model=model,
+            messages=messages,
+            extra_body={
                 "temperature": 0.1,
-                # "http_referer": "https://telescrape-gaza.org",  # Optional, for analytics
-                "title": "TeleScrape Gaza Events Classifier"     # Optional, for analytics
+                "title": "TeleScrape Gaza Events Classifier"
             }
-        else:
-            # For OpenAI
-            kwargs["temperature"] = 0.1
-            kwargs["response_format"] = {"type": "json_object"}
+        )
         
-        # Make the API request
-        response = client.chat.completions.create(**kwargs)
+        # Log successful response
+        logger.info(f"Received response from API")
         
         # Parse the JSON response
         content = response.choices[0].message.content
+        logger.info(f"Response content: {content[:100]}...") # Log first 100 chars of response
+        
         # Sometimes the model might return JSON inside a code block
         if "```json" in content:
             content = content.split("```json")[1].split("```")[0].strip()
@@ -163,7 +159,7 @@ def classify_message(client, message_text, model="gpt-4-turbo", use_openrouter=F
             "error": True
         }
 
-def process_messages(input_file, output_file, model="gpt-4-turbo", max_messages=None, start_from=0):
+def process_messages(input_file, output_file, model="deepseek/deepseek-chat-v3-0324:free", max_messages=None, start_from=0):
     """
     Process messages from CSV file and classify them for genocidal content.
     
@@ -175,8 +171,8 @@ def process_messages(input_file, output_file, model="gpt-4-turbo", max_messages=
         start_from: Index to start processing from (for resuming)
     """
     try:
-        # Set up API client
-        client, use_openrouter = setup_api_client()
+        # Set up API client - now simplified to just OpenRouter
+        client = setup_api_client()
         
         # Read messages data
         logger.info(f"Reading messages from {input_file}")
@@ -201,7 +197,7 @@ def process_messages(input_file, output_file, model="gpt-4-turbo", max_messages=
             
         # Process each message
         logger.info(f"Processing messages {start_from} to {end_idx-1} out of {len(df)} using model {model}")
-        logger.info(f"Using API type: {'OpenRouter' if use_openrouter else 'OpenAI'}")
+        logger.info(f"Using OpenRouter API")
         
         for i in tqdm(range(start_from, end_idx), desc="Classifying messages"):
             row = df.iloc[i]
@@ -213,7 +209,7 @@ def process_messages(input_file, output_file, model="gpt-4-turbo", max_messages=
                 continue
                 
             # Classify the message
-            classification = classify_message(client, message_text, model, use_openrouter)
+            classification = classify_message(client, message_text, model)
             
             # Add classification results to row
             new_row = row.to_dict()
@@ -222,23 +218,22 @@ def process_messages(input_file, output_file, model="gpt-4-turbo", max_messages=
             # Append to existing DataFrame
             existing_df = pd.concat([existing_df, pd.DataFrame([new_row])], ignore_index=True)
             
-            # Save progress every 10 messages
-            if (i - start_from + 1) % 10 == 0 or i == end_idx - 1:
-                existing_df.to_csv(output_file, index=False, encoding='utf-8')
-                logger.info(f"Saved progress: {i - start_from + 1}/{end_idx - start_from} messages processed")
+            # Save after each message - this is the change the user requested
+            existing_df.to_csv(output_file, index=False, encoding='utf-8')
+            logger.info(f"Saved progress: {i - start_from + 1}/{end_idx - start_from} messages processed")
+            
+            # Generate and update genocidal messages file after each message
+            genocidal_df = existing_df[existing_df['is_genocidal'] == True]
+            genocidal_output = output_file.replace('.csv', '_genocidal.csv')
+            genocidal_df.to_csv(genocidal_output, index=False, encoding='utf-8')
             
             # Add delay to avoid rate limits
             time.sleep(1)
         
-        # Generate summary statistics
+        # Generate final summary statistics
         genocidal_count = existing_df['is_genocidal'].sum()
         total_count = len(existing_df)
         logger.info(f"Classification summary: {genocidal_count}/{total_count} messages classified as genocidal ({genocidal_count/total_count*100:.2f}%)")
-        
-        # Create filtered output with only genocidal messages
-        genocidal_df = existing_df[existing_df['is_genocidal'] == True]
-        genocidal_output = output_file.replace('.csv', '_genocidal.csv')
-        genocidal_df.to_csv(genocidal_output, index=False, encoding='utf-8')
         logger.info(f"Genocidal messages saved to {genocidal_output}")
         
     except Exception as e:
