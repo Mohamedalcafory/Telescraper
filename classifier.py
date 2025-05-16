@@ -88,7 +88,7 @@ def setup_api_client():
     """Set up OpenRouter API client directly"""
     try:
         # Hardcoded API key - you can replace this with your actual key or environment variable
-        api_key = os.getenv("OPENROUTER_API_KEY", "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")
+        api_key = os.getenv("OPENROUTER_API_KEY", "")
         
         if not api_key or len(api_key) < 10:
             logger.error("Invalid API key")
