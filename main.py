@@ -271,8 +271,8 @@ async def main():
         await asyncio.sleep(1)  # Wait a moment to ensure the client is fully connected
 
         # Set up date range
-        start_date = datetime(2023, 1, 1, tzinfo=timezone.utc)
-        end_date = datetime(2023, 3, 31, tzinfo=timezone.utc)
+        start_date = datetime(2025, 1, 1, tzinfo=timezone.utc)
+        end_date = datetime(2025, 5, 31, tzinfo=timezone.utc)
         
         # Set up checkpoint file for resumable scraping
         checkpoint_file = f"{channel_username}_checkpoint.txt"
