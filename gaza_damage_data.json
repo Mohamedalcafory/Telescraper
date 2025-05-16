@@ -1,0 +1,248 @@
+{
+  "damage_metrics": {
+    "governorates": [
+      {
+        "name": "North Gaza",
+        "statistics": {
+          "buildings_destroyed_percent": 69,
+          "displacement_percent": 89,
+          "civilian_casualties": 11230,
+          "infrastructure_damage_percent": {
+            "hospitals": 90,
+            "schools": 80,
+            "water_facilities": 95,
+            "power_facilities": 98
+          }
+        }
+      },
+      {
+        "name": "Gaza",
+        "statistics": {
+          "buildings_destroyed_percent": 65,
+          "displacement_percent": 92,
+          "civilian_casualties": 13850,
+          "infrastructure_damage_percent": {
+            "hospitals": 85,
+            "schools": 78,
+            "water_facilities": 90,
+            "power_facilities": 100
+          }
+        }
+      },
+      {
+        "name": "Deir al-Balah",
+        "statistics": {
+          "buildings_destroyed_percent": 58,
+          "displacement_percent": 72,
+          "civilian_casualties": 9740,
+          "infrastructure_damage_percent": {
+            "hospitals": 75,
+            "schools": 70,
+            "water_facilities": 85,
+            "power_facilities": 90
+          }
+        }
+      },
+      {
+        "name": "Khan Younis",
+        "statistics": {
+          "buildings_destroyed_percent": 72,
+          "displacement_percent": 94,
+          "civilian_casualties": 10980,
+          "infrastructure_damage_percent": {
+            "hospitals": 95,
+            "schools": 85,
+            "water_facilities": 90,
+            "power_facilities": 95
+          }
+        }
+      },
+      {
+        "name": "Rafah",
+        "statistics": {
+          "buildings_destroyed_percent": 80,
+          "displacement_percent": 98,
+          "civilian_casualties": 12670,
+          "infrastructure_damage_percent": {
+            "hospitals": 90,
+            "schools": 85,
+            "water_facilities": 95,
+            "power_facilities": 100
+          }
+        }
+      }
+    ],
+    "cities_and_towns": [
+      {
+        "name": "Jabalia",
+        "statistics": {
+          "buildings_destroyed_percent": 75,
+          "displacement_percent": 95,
+          "civilian_casualties": 4200,
+          "infrastructure_damage_percent": {
+            "hospitals": 100,
+            "schools": 90,
+            "water_facilities": 100,
+            "power_facilities": 100
+          }
+        }
+      },
+      {
+        "name": "Beit Lahia",
+        "statistics": {
+          "buildings_destroyed_percent": 82,
+          "displacement_percent": 96,
+          "civilian_casualties": 3100,
+          "infrastructure_damage_percent": {
+            "hospitals": 90,
+            "schools": 85,
+            "water_facilities": 95,
+            "power_facilities": 100
+          }
+        }
+      },
+      {
+        "name": "Beit Hanoun",
+        "statistics": {
+          "buildings_destroyed_percent": 90,
+          "displacement_percent": 100,
+          "civilian_casualties": 2800,
+          "infrastructure_damage_percent": {
+            "hospitals": 100,
+            "schools": 100,
+            "water_facilities": 100,
+            "power_facilities": 100
+          }
+        }
+      },
+      {
+        "name": "Gaza City",
+        "statistics": {
+          "buildings_destroyed_percent": 70,
+          "displacement_percent": 90,
+          "civilian_casualties": 9500,
+          "infrastructure_damage_percent": {
+            "hospitals": 85,
+            "schools": 80,
+            "water_facilities": 90,
+            "power_facilities": 95
+          }
+        }
+      },
+      {
+        "name": "Deir al-Balah City",
+        "statistics": {
+          "buildings_destroyed_percent": 60,
+          "displacement_percent": 75,
+          "civilian_casualties": 3800,
+          "infrastructure_damage_percent": {
+            "hospitals": 80,
+            "schools": 70,
+            "water_facilities": 85,
+            "power_facilities": 90
+          }
+        }
+      },
+      {
+        "name": "Khan Younis City",
+        "statistics": {
+          "buildings_destroyed_percent": 75,
+          "displacement_percent": 95,
+          "civilian_casualties": 7200,
+          "infrastructure_damage_percent": {
+            "hospitals": 90,
+            "schools": 85,
+            "water_facilities": 95,
+            "power_facilities": 95
+          }
+        }
+      },
+      {
+        "name": "Rafah City",
+        "statistics": {
+          "buildings_destroyed_percent": 85,
+          "displacement_percent": 99,
+          "civilian_casualties": 10500,
+          "infrastructure_damage_percent": {
+            "hospitals": 100,
+            "schools": 90,
+            "water_facilities": 100,
+            "power_facilities": 100
+          }
+        }
+      }
+    ],
+    "neighborhoods": [
+      {
+        "name": "Jabalia Camp",
+        "statistics": {
+          "buildings_destroyed_percent": 90,
+          "displacement_percent": 100,
+          "civilian_casualties": 2200,
+          "infrastructure_damage_percent": {
+            "hospitals": 100,
+            "schools": 100,
+            "water_facilities": 100,
+            "power_facilities": 100
+          }
+        }
+      },
+      {
+        "name": "Al-Rimal",
+        "statistics": {
+          "buildings_destroyed_percent": 75,
+          "displacement_percent": 95,
+          "civilian_casualties": 1800,
+          "infrastructure_damage_percent": {
+            "hospitals": 90,
+            "schools": 85,
+            "water_facilities": 95,
+            "power_facilities": 100
+          }
+        }
+      },
+      {
+        "name": "Al-Shati Camp",
+        "statistics": {
+          "buildings_destroyed_percent": 85,
+          "displacement_percent": 98,
+          "civilian_casualties": 1600,
+          "infrastructure_damage_percent": {
+            "hospitals": 100,
+            "schools": 90,
+            "water_facilities": 100,
+            "power_facilities": 100
+          }
+        }
+      },
+      {
+        "name": "Al-Shejaiya",
+        "statistics": {
+          "buildings_destroyed_percent": 95,
+          "displacement_percent": 100,
+          "civilian_casualties": 2100,
+          "infrastructure_damage_percent": {
+            "hospitals": 100,
+            "schools": 100,
+            "water_facilities": 100,
+            "power_facilities": 100
+          }
+        }
+      },
+      {
+        "name": "Tal Al-Sultan",
+        "statistics": {
+          "buildings_destroyed_percent": 80,
+          "displacement_percent": 95,
+          "civilian_casualties": 1900,
+          "infrastructure_damage_percent": {
+            "hospitals": 90,
+            "schools": 85,
+            "water_facilities": 95,
+            "power_facilities": 100
+          }
+        }
+      }
+    ]
+  }
+} 

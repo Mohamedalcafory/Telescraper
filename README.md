@@ -1,74 +1,65 @@
-# TeleScrape - Gaza Events Classifier
+# Gaza Geographic and Damage Analysis
 
-A tool to document and classify events in Gaza by analyzing Telegram messages for signs of genocidal acts.
+This project provides a comprehensive dataset and visualization tools for analyzing the geographical structure of Gaza and the damage inflicted during the conflict.
 
-## Setup
+## Project Structure
 
-1. Install dependencies:
-   ```
-   pip install -e .
-   ```
+- `gaza_geographic_data.json` - Detailed hierarchical data of Gaza's governorates, cities, towns, villages, neighborhoods, and streets
+- `gaza_damage_data.json` - Damage metrics for Gaza locations (building destruction, casualties, displacement, infrastructure damage)
+- `gaza_data_aggregator.py` - Script to analyze geographic structure and count streets by area
+- `gaza_damage_visualizer.py` - Script to generate visualizations of damage statistics
+- `gaza_damage_analysis.md` - Summary report of key findings from the damage analysis
 
-2. Create a `.env` file with your API keys:
-   ```
-   # Choose one: "openai" or "openrouter"
-   API_TYPE=openai
+## Installation
 
-   # OpenAI API Key (required if API_TYPE=openai)
-   OPENAI_API_KEY=your_openai_api_key_here
+1. Clone this repository
+2. Install the required dependencies:
 
-   # OpenRouter API Key (required if API_TYPE=openrouter)
-   OPENROUTER_API_KEY=your_openrouter_api_key_here
-   ```
+```bash
+pip install -r requirements.txt
+```
 
 ## Usage
 
-The project consists of two main components:
+### Geographic Data Analysis
 
-### 1. Telegram Scraper (`main.py`)
-
-Scrapes messages from a Telegram channel.
+To analyze the geographic structure and generate street counts:
 
 ```bash
-python main.py
+python gaza_data_aggregator.py
 ```
 
-### 2. Message Classifier (`classifier.py`)
+This will output:
+- CSV files with counts at different geographic levels
+- A summary text file
+- Console output with key statistics
 
-Analyzes messages for evidence of genocidal acts.
+### Damage Visualization
+
+To generate visualizations of damage statistics:
 
 ```bash
-# Basic usage with default settings
-python classifier.py
-
-# With custom options
-python classifier.py --input muthanapress84_messages.csv --output classified_messages.csv --model gpt-4-turbo --max 100 --start 0
+python gaza_damage_visualizer.py
 ```
 
-Options:
-- `--input`, `-i`: Input CSV file (default: muthanapress84_messages.csv)
-- `--output`, `-o`: Output CSV file (default: classified_messages.csv)
-- `--model`, `-m`: LLM model to use (default: gpt-4-turbo)
-- `--max`: Maximum number of messages to process
-- `--start`: Index to start processing from (for resuming)
+This will create:
+- A `visualizations` directory containing charts and graphs
+- An interactive HTML heatmap
+- A markdown report summarizing key findings
 
-## Output
+## Visualizations
 
-The classifier generates two CSV files:
-1. `classified_messages.csv` - All messages with classification columns
-2. `classified_messages_genocidal.csv` - Only messages classified as genocidal
+The damage visualizer generates multiple types of visualizations:
 
-Classification includes these categories:
-- `civilian_deaths`: Indicates civilian casualties
-- `targeting_civilians`: Deliberate targeting of civilians
-- `blocking_aid`: Blocking humanitarian aid
-- `destroying_homes`: Destruction of homes/residential areas
-- `targeting_facilities`: Targeting hospitals, schools, or shelters
-- `forced_displacement`: Forced displacement of population
-- `systematic_violence`: Systematic violence targeting specific groups
-- `is_genocidal`: Overall classification as genocidal
-- `explanation`: Reasoning for the classification
+1. **Governorate-level Damage Overview** - Bar charts showing building destruction, displacement, casualties, and infrastructure damage by governorate
+2. **City-level Damage Comparison** - Similar charts focused on major cities
+3. **Interactive Damage Heatmap** - Color-coded matrix showing damage across all cities by category
+4. **Camp vs. Non-Camp Comparison** - Comparison of damage metrics between refugee camps and other areas
+
+## Data Sources
+
+The geographic data has been compiled from various sources, with a focus on providing a comprehensive representation of Gaza's geography at multiple levels. The damage metrics are representative of the scale of destruction but should be considered illustrative.
 
 ## License
 
-This project is for humanitarian documentation purposes only.
+This project is provided for educational and humanitarian purposes.
