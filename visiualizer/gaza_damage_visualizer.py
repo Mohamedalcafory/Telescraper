@@ -14,7 +14,7 @@ import faiss
 os.makedirs('visualizations', exist_ok=True)
 
 # Load the Gaza geographic data and damage data
-with open('gaza_geographic_data.json', 'r', encoding='utf-8') as f:
+with open('aggregator/gaza_geographic_data.json', 'r', encoding='utf-8') as f:
     geo_data = json.load(f)
 
 with open('gaza_damage_data.json', 'r', encoding='utf-8') as f:

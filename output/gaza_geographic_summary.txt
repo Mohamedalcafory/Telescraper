@@ -1,0 +1,38 @@
+Gaza Geographic Data Summary
+===========================
+
+Total Gaza Governorates: 5
+Total Cities/Towns: 19
+Total Neighborhoods: 28
+Total Unique Streets: 64
+
+Streets by Governorate:
+  Gaza: 21 streets
+  Khan Younis: 20 streets
+  North Gaza: 17 streets
+  Deir al-Balah: 17 streets
+  Rafah: 14 streets
+
+Streets by City/Town (Top 10):
+  Gaza City (city): 19 streets
+  Rafah City (city): 12 streets
+  Khan Younis City (city): 8 streets
+  Jabalia (city): 5 streets
+  Beit Lahia (city): 5 streets
+  Beit Hanoun (city): 4 streets
+  Deir al-Balah City (city): 4 streets
+  Al-Nuseirat (refugee_camp): 4 streets
+  Um Al-Nasser (village): 3 streets
+  Al-Zawaida (town): 3 streets
+
+Streets by Neighborhood (Top 10):
+  Al-Rimal: 4 streets
+  Jabalia Camp: 3 streets
+  Beit Lahia Center: 3 streets
+  Tel Al-Hawa: 3 streets
+  Al-Nazla: 2 streets
+  Al-Atatra: 2 streets
+  Eastern Quarter: 2 streets
+  Western Quarter: 2 streets
+  Al-Shati Camp: 2 streets
+  Al-Tuffah: 2 streets
