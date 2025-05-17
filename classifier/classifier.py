@@ -64,6 +64,11 @@ def retry_with_exponential_backoff(
                     logger.error(f"Maximum number of retries ({max_retries}) exceeded.")
                     raise e
 
+                # Check for auth errors (401)
+                if hasattr(e, 'status_code') and e.status_code == 401:
+                    logger.error(f"Authentication error (401): {e}. This likely means your API key is invalid or expired.")
+                    raise e  # Don't retry auth errors, just fail immediately
+                
                 # Calculate wait time with optional jitter
                 if jitter:
                     sleep_time = delay * (0.5 + random.random())
@@ -87,7 +92,7 @@ def retry_with_exponential_backoff(
 def setup_api_client():
     """Set up OpenRouter API client directly"""
     try:
-        # Hardcoded API key - you can replace this with your actual key or environment variable
+        # Get API key from environment variable
         api_key = os.getenv("OPENROUTER_API_KEY", "")
         
         if not api_key or len(api_key) < 10:
@@ -96,10 +101,14 @@ def setup_api_client():
             
         logger.info(f"Setting up OpenRouter client with key starting with: {api_key[:10]}...")
         
-        # Create client with explicit OpenRouter base URL
+        # Create client with explicit OpenRouter base URL and proper headers
         client = OpenAI(
             api_key=api_key,
-            base_url="https://openrouter.ai/api/v1"
+            base_url="https://openrouter.ai/api/v1",
+            default_headers={
+                "HTTP-Referer": "https://github.com/TeleScrape",  # Recommended by OpenRouter
+                "X-Title": "TeleScrape Gaza Events Classifier"     # Helps identify your app
+            }
         )
         
         return client
@@ -121,9 +130,23 @@ def make_api_request(client, model, messages):
         )
         return response
     except Exception as e:
+        error_msg = str(e).lower()
+        
+        # Handle authentication errors (401)
+        if "401" in error_msg or "unauthorized" in error_msg or "authentication" in error_msg:
+            logger.error(f"Authentication error (401): {e}")
+            logger.error("Your API key may be invalid, expired, or revoked after a few uses.")
+            logger.error("Please check your OPENROUTER_API_KEY environment variable.")
+            
+            # Create a custom exception with status code attribute for the retry function to catch
+            auth_error = APIRateLimitError(f"Authentication error: {e}")
+            auth_error.status_code = 401
+            raise auth_error
+            
         # Check for rate limiting errors
-        if "rate limit" in str(e).lower() or "too many requests" in str(e).lower():
+        elif "rate limit" in error_msg or "too many requests" in error_msg:
             raise APIRateLimitError(f"Rate limit exceeded: {e}")
+            
         # Re-raise other exceptions
         raise
 
@@ -326,6 +349,40 @@ def safe_to_csv(df, file_path, max_retries=3):
                 return False
             time.sleep(1)  # Wait before retry
 
+def test_api_key(client):
+    """Test API key validity with a simple request"""
+    try:
+        logger.info("Testing API key validity...")
+        
+        # Create a simple test message
+        test_messages = [
+            {"role": "user", "content": "Hello, this is a test message to verify API key validity. Please respond with 'API key is valid'."}
+        ]
+        
+        # Use a model that should be reliably available
+        test_model = "openai/gpt-3.5-turbo:free"
+        
+        # Test request
+        response = client.chat.completions.create(
+            model=test_model,
+            messages=test_messages,
+            max_tokens=20
+        )
+        
+        # If we get here, the key is valid
+        logger.info("API key validation successful!")
+        return True
+        
+    except Exception as e:
+        error_msg = str(e).lower()
+        if "401" in error_msg or "unauthorized" in error_msg or "authentication" in error_msg:
+            logger.error(f"API key validation failed: {e}")
+            logger.error("Your OpenRouter API key appears to be invalid or expired.")
+            return False
+        else:
+            logger.warning(f"API key test encountered an error (but might still be valid): {e}")
+            return True  # Assume valid if error is not auth-related
+
 def process_messages(input_file, output_file, model="deepseek/deepseek-chat-v3-0324:free", max_messages=None, start_from=0):
     """
     Process messages from CSV file and classify them for genocidal content.
@@ -347,6 +404,10 @@ def process_messages(input_file, output_file, model="deepseek/deepseek-chat-v3-0
         # Set up API client - now simplified to just OpenRouter
         client = setup_api_client()
         
+        # Test API key validity
+        if not test_api_key(client):
+            raise ValueError("API key validation failed. Please check your OPENROUTER_API_KEY environment variable.")
+            
         # Read messages data with error handling
         logger.info(f"Reading messages from {input_file}")
         try:
