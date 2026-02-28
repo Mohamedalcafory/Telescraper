@@ -1,65 +1,175 @@
-# Gaza Geographic and Damage Analysis
+# TeleScrape
 
-This project provides a comprehensive dataset and visualization tools for analyzing the geographical structure of Gaza and the damage inflicted during the conflict.
+Telegram pipeline that scrapes messages from a channel, classifies them for genocide-related content, and publishes filtered results to a Telegram bot.
 
-## Project Structure
+## Overview
 
-- `gaza_geographic_data.json` - Detailed hierarchical data of Gaza's governorates, cities, towns, villages, neighborhoods, and streets
-- `gaza_damage_data.json` - Damage metrics for Gaza locations (building destruction, casualties, displacement, infrastructure damage)
-- `gaza_data_aggregator.py` - Script to analyze geographic structure and count streets by area
-- `gaza_damage_visualizer.py` - Script to generate visualizations of damage statistics
-- `gaza_damage_analysis.md` - Summary report of key findings from the damage analysis
+```
+Scraper → MongoDB → Classifier → Filter → Publisher → Telegram Bot
+   ↓           ↓           ↓           ↓          ↓
+ Telegram   Storage     AI/LLM     Rules     Delete on success
+```
+
+## Features
+
+- **MongoDB-backed storage** - All messages stored in MongoDB with checkpoint sync
+- **AI Classification** - Uses OpenRouter API (DeepSeek) to classify messages
+- **Filtering** - Filters genocide-related content based on classification
+- **Publisher** - Sends formatted messages to Telegram channel
+- **Delete on publish** - Removes messages from database after successful publishing
+- **Retry queue** - Configurable retries for failed publishes
+- **Scheduler** - Runs on configurable intervals (default: 2 hours)
+
+## Requirements
+
+- Python 3.9+
+- MongoDB
+- Telegram API credentials
+- OpenRouter API key
 
 ## Installation
 
-1. Clone this repository
-2. Install the required dependencies:
-
 ```bash
+# Clone and enter directory
+cd Telescraper
+
+# Install dependencies
 pip install -r requirements.txt
+
+# Copy configuration
+cp config/.env.example config/.env
+```
+
+## Configuration
+
+Edit `config/.env` with your credentials:
+
+```env
+# MongoDB
+MONGODB_URI=mongodb://localhost:27017
+MONGODB_DATABASE=telescraper
+
+# Telegram Scraper
+TELEGRAM_API_ID=your_api_id
+TELEGRAM_API_HASH=your_api_hash
+TELEGRAM_PHONE=+1234567890
+SOURCE_CHANNEL=muthanapress84
+
+# Telegram Publisher
+TELEGRAM_BOT_TOKEN=your_bot_token
+PUBLISH_CHANNEL=@your_channel
+
+# OpenRouter
+OPENROUTER_API_KEY=your_api_key
+
+# Pipeline Settings
+SYNC_INTERVAL_HOURS=2
+BATCH_SIZE=50
+MAX_RETRY_COUNT=3
+RETRY_DELAY_SECONDS=60
+CLASSIFICATION_MODEL=deepseek/deepseek-chat-v3-0324:free
 ```
 
 ## Usage
 
-### Geographic Data Analysis
-
-To analyze the geographic structure and generate street counts:
+### Run Full Pipeline Once
 
 ```bash
-python gaza_data_aggregator.py
+python main.py --run-once
 ```
 
-This will output:
-- CSV files with counts at different geographic levels
-- A summary text file
-- Console output with key statistics
-
-### Damage Visualization
-
-To generate visualizations of damage statistics:
+### Run on Schedule
 
 ```bash
-python gaza_damage_visualizer.py
+python main.py --schedule
 ```
 
-This will create:
-- A `visualizations` directory containing charts and graphs
-- An interactive HTML heatmap
-- A markdown report summarizing key findings
+### Individual Components
 
-## Visualizations
+```bash
+# Sync messages only
+python main.py --sync
 
-The damage visualizer generates multiple types of visualizations:
+# Classify messages only
+python main.py --classify
 
-1. **Governorate-level Damage Overview** - Bar charts showing building destruction, displacement, casualties, and infrastructure damage by governorate
-2. **City-level Damage Comparison** - Similar charts focused on major cities
-3. **Interactive Damage Heatmap** - Color-coded matrix showing damage across all cities by category
-4. **Camp vs. Non-Camp Comparison** - Comparison of damage metrics between refugee camps and other areas
+# Publish messages only
+python main.py --publish
 
-## Data Sources
+# Show database statistics
+python main.py --stats
+```
 
-The geographic data has been compiled from various sources, with a focus on providing a comprehensive representation of Gaza's geography at multiple levels. The damage metrics are representative of the scale of destruction but should be considered illustrative.
+## Database Schema
+
+### Messages Collection
+
+```javascript
+{
+  message_id: Number,
+  channel: String,
+  text: String,
+  date: Date,
+  url: String,
+  classification: {
+    civilian_deaths: Boolean,
+    targeting_civilians: Boolean,
+    blocking_aid: Boolean,
+    destroying_homes: Boolean,
+    targeting_facilities: Boolean,
+    forced_displacement: Boolean,
+    systematic_violence: Boolean,
+    is_official_speech: Boolean,
+    is_genocidal: Boolean,
+    explanation: String,
+    classified_at: Date,
+    model_used: String
+  },
+  status: String,  // new, classified, pending_publish, published, failed
+  retry_count: Number,
+  error_message: String,
+  published_at: Date,
+  created_at: Date,
+  updated_at: Date
+}
+```
+
+### Checkpoints Collection
+
+```javascript
+{
+  channel: String,
+  last_message_id: Number,
+  last_sync: Date
+}
+```
+
+## Message Status Flow
+
+```
+new → classified → pending_publish → published → (deleted)
+                                      ↓
+                                   failed → (retry up to MAX_RETRY_COUNT)
+```
+
+## Environment Variables
+
+| Variable | Description | Default |
+|----------|-------------|---------|
+| MONGODB_URI | MongoDB connection string | mongodb://localhost:27017 |
+| MONGODB_DATABASE | Database name | telescraper |
+| TELEGRAM_API_ID | Telegram API ID | - |
+| TELEGRAM_API_HASH | Telegram API hash | - |
+| TELEGRAM_PHONE | Phone number | - |
+| SOURCE_CHANNEL | Channel to scrape | muthanapress84 |
+| TELEGRAM_BOT_TOKEN | Bot token for publishing | - |
+| PUBLISH_CHANNEL | Channel to publish to | - |
+| OPENROUTER_API_KEY | OpenRouter API key | - |
+| SYNC_INTERVAL_HOURS | Sync interval | 2 |
+| BATCH_SIZE | Messages per batch | 50 |
+| MAX_RETRY_COUNT | Max publish retries | 3 |
+| RETRY_DELAY_SECONDS | Delay between retries | 60 |
 
 ## License
 
-This project is provided for educational and humanitarian purposes.
+MIT
