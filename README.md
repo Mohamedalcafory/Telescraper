@@ -19,6 +19,7 @@ Scraper → MongoDB → Classifier → Filter → Publisher → Telegram Bot
 - **Delete on publish** - Removes messages from database after successful publishing
 - **Retry queue** - Configurable retries for failed publishes
 - **Scheduler** - Runs on configurable intervals (default: 2 hours)
+- **Interactive Bot** - Telegram bot for monitoring and managing the pipeline
 
 ## Requirements
 
@@ -68,6 +69,11 @@ BATCH_SIZE=50
 MAX_RETRY_COUNT=3
 RETRY_DELAY_SECONDS=60
 CLASSIFICATION_MODEL=deepseek/deepseek-chat-v3-0324:free
+
+# Bot Settings (Optional)
+ADMIN_USER_IDS=123456789,987654321
+BOT_ENABLE_COMMANDS=true
+BOT_ENABLE_CALLBACKS=true
 ```
 
 ## Usage
@@ -98,6 +104,56 @@ python main.py --publish
 
 # Show database statistics
 python main.py --stats
+
+# Run the Telegram Bot
+python main.py --bot
+```
+
+## Bot Commands
+
+### User Commands (Available to All)
+
+| Command | Description |
+|---------|-------------|
+| `/start` | Start the bot and show welcome message |
+| `/help` | Display help information |
+| `/latest` | Show latest messages from database |
+| `/genocidal` | Show messages classified as genocidal |
+
+### Admin Commands (Requires Admin Access)
+
+| Command | Description |
+|---------|-------------|
+| `/stats` | Show database statistics |
+| `/pending` | Show messages pending publication |
+| `/failed` | Show failed publication messages |
+| `/publish <id>` | Manually publish a specific message |
+| `/publish_all` | Publish all pending messages |
+| `/retry` | Retry failed messages |
+| `/delete <id>` | Delete a message from database |
+| `/config` | Show system configuration |
+| `/search <query>` | Search messages by text |
+| `/admin` | Open admin panel |
+
+### Inline Keyboards
+
+The bot provides interactive inline keyboards for:
+- Message preview with classification flags
+- Publish/Delete actions
+- Confirmation dialogs
+- Navigation menus
+
+### Running the Bot
+
+```bash
+# Run bot in polling mode (default)
+python main.py --bot
+
+# Or run directly
+python bot/app.py
+
+# Run in webhook mode
+python bot/app.py --webhook --url https://your-domain.com --port 8443
 ```
 
 ## Database Schema
@@ -169,6 +225,44 @@ new → classified → pending_publish → published → (deleted)
 | BATCH_SIZE | Messages per batch | 50 |
 | MAX_RETRY_COUNT | Max publish retries | 3 |
 | RETRY_DELAY_SECONDS | Delay between retries | 60 |
+| ADMIN_USER_IDS | Comma-separated admin user IDs | - |
+| BOT_ENABLE_COMMANDS | Enable bot commands | true |
+| BOT_ENABLE_CALLBACKS | Enable callback queries | true |
+
+## Architecture
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                         TeleScrape                              │
+├─────────────────────────────────────────────────────────────────┤
+│  Scraper → MongoDB → Classifier → Filter → Publisher → Bot    │
+│     ↓           ↓           ↓           ↓          ↓          │
+│  Telethon   Storage     OpenRouter    Rules    Interactive    │
+│                                                       ↓         │
+│                                              Telegram Channel   │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+### Module Structure
+
+```
+Telescraper/
+├── bot/                    # Telegram bot module
+│   ├── app.py             # Bot application
+│   ├── handlers.py        # Command handlers
+│   ├── keyboards.py       # Inline keyboards
+│   ├── services.py       # Business logic
+│   ├── config.py         # Bot configuration
+│   └── utils.py          # Utilities
+├── classifier/           # AI classification
+├── config/               # Configuration
+├── database/             # MongoDB operations
+├── filter/               # Message filtering
+├── publisher/            # Telegram publishing
+├── scraper/              # Telegram scraping
+├── main.py               # Main entry point
+└── orchestrator.py       # Pipeline orchestration
+```
 
 ## License
 
